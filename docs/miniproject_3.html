@@ -14468,6 +14468,7 @@ $$ P(d) = \sum_{a,b,x,c} P(a,b,x,c,d) $$
             <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_to_vars</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">V</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_vars</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
         <span class="n">cp</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
             <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_node</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -14756,7 +14757,7 @@ P(x2|c1,b2) 0.2692307692307693
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;\_&quot;</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">) = </span><span class="si">{</span><span class="n">ans</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">) = </span><span class="si">{</span><span class="n">ans</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14767,7 +14768,7 @@ P(x2|c1,b2) 0.2692307692307693
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Cross-check-with-examples-in-the-Mini-project-3's-hint">Cross-check with examples in the Mini-project 3's hint<a class="anchor-link" href="#Cross-check-with-examples-in-the-Mini-project-3's-hint">&#182;</a></h3>
+<h3 id="Cross-check-with-examples-in-the-Mini-project-3's-hints">Cross-check with examples in the Mini-project 3's hints<a class="anchor-link" href="#Cross-check-with-examples-in-the-Mini-project-3's-hints">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -14802,7 +14803,7 @@ P(x2|c1,b2) 0.2692307692307693
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(summer,north\_atlantic,sea\_bass,dark,thin) = 0.018$
+$\displaystyle P(summer,north\_atlantic,sea\_bass,dark,thin) = 0.0180$
 </div>
 
 </div>
@@ -14816,7 +14817,7 @@ $\displaystyle P(summer,north\_atlantic,sea\_bass,dark,thin) = 0.018$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(x1,b2,c1) = 0.114$
+$\displaystyle P(x1,b2,c1) = 0.1140$
 </div>
 
 </div>
@@ -14830,7 +14831,7 @@ $\displaystyle P(x1,b2,c1) = 0.114$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(c1,b2,x2) = 0.042$
+$\displaystyle P(c1,b2,x2) = 0.0420$
 </div>
 
 </div>
@@ -14844,7 +14845,7 @@ $\displaystyle P(c1,b2,x2) = 0.042$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(south\_atlantic,light) = 0.156$
+$\displaystyle P(south\_atlantic,light) = 0.1560$
 </div>
 
 </div>
@@ -14858,7 +14859,7 @@ $\displaystyle P(south\_atlantic,light) = 0.156$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(x1|b2,c1) = 0.731$
+$\displaystyle P(x1|b2,c1) = 0.7308$
 </div>
 
 </div>
@@ -14872,7 +14873,7 @@ $\displaystyle P(x1|b2,c1) = 0.731$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(x2|b2,c1) = 0.269$
+$\displaystyle P(x2|b2,c1) = 0.2692$
 </div>
 
 </div>
@@ -14889,14 +14890,14 @@ $\displaystyle P(x2|b2,c1) = 0.269$
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="(a)-What-is-the-probability-that-a-sea-bass-was-caught-in-the-summer,-in-the-North-Atlantic-and-it-is-dark-and-thin?">(a) What is the probability that a <em>sea bass</em> was caught in the <em>summer</em>, in the <em>North Atlantic</em> and it is <em>dark</em> and <em>thin</em>?<a class="anchor-link" href="#(a)-What-is-the-probability-that-a-sea-bass-was-caught-in-the-summer,-in-the-North-Atlantic-and-it-is-dark-and-thin?">&#182;</a></h2><ul>
-<li>Summer is $a_3$</li>
-<li>North Atlantic is $b_1$</li>
-<li>Sea bass is $x_2$</li>
-<li>Dark is $c_3$</li>
+<h2 id="(a)-A-light,-thin-fish-is-caught-in-the-North-Atlantic-in-the-Summer.-What-is-the-probability-it-is-a-sea-bass?">(a) A <em>light</em>, <em>thin</em> fish is caught in the <em>North Atlantic</em> in the <em>Summer</em>. What is the probability it is a <em>sea bass</em>?<a class="anchor-link" href="#(a)-A-light,-thin-fish-is-caught-in-the-North-Atlantic-in-the-Summer.-What-is-the-probability-it-is-a-sea-bass?">&#182;</a></h2><ul>
+<li>Light is $c_1$</li>
 <li>Thin is $d_2$</li>
+<li>North Atlantic is $b_1$</li>
+<li>Summer is $a_3$</li>
+<li>Sea bass is $x_2$</li>
 </ul>
-$$ P(a_3, b_1, x_2, c_3, d_2) $$
+$$ P(x_2 | c_1, d_2, b_1, a_P("sea_bass|light,thin,north_atlantic,summer")3) $$
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -14904,8 +14905,8 @@ $$ P(a_3, b_1, x_2, c_3, d_2) $$
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;summer,north_atlantic,sea_bass,dark,thin&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a3,b1,x2,c3,d2&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;sea_bass|light,thin,north_atlantic,summer&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;x2|c1,d2,b1,a3&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14927,7 +14928,7 @@ $$ P(a_3, b_1, x_2, c_3, d_2) $$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(summer,north\_atlantic,sea\_bass,dark,thin) = 0.018$
+$\displaystyle P(sea\_bass|light,thin,north\_atlantic,summer) = 0.2222$
 </div>
 
 </div>
@@ -14941,7 +14942,7 @@ $\displaystyle P(summer,north\_atlantic,sea\_bass,dark,thin) = 0.018$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a3,b1,x2,c3,d2) = 0.018$
+$\displaystyle P(x2|c1,d2,b1,a3) = 0.2222$
 </div>
 
 </div>
@@ -14959,11 +14960,11 @@ $\displaystyle P(a3,b1,x2,c3,d2) = 0.018$
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="(b)-A-thin,-light-fish-is-caught-in-the-North-Atlantic.-What-is-the-probability-it-is-winter?-spring?-summer?-autumn?">(b) A <em>thin</em>, <em>light</em> fish is caught in the <em>North Atlantic</em>. What is the probability it is <em>winter</em>? <em>spring</em>? <em>summer</em>? <em>autumn</em>?<a class="anchor-link" href="#(b)-A-thin,-light-fish-is-caught-in-the-North-Atlantic.-What-is-the-probability-it-is-winter?-spring?-summer?-autumn?">&#182;</a></h2><ul>
-<li>North Atlantic is $b_1$</li>
-<li>Light is $c_1$</li>
 <li>Thin is $d_2$</li>
+<li>Light is $c_1$</li>
+<li>North Atlantic is $b_1$</li>
 </ul>
-$$ P(a_i | b_1, c_1, d_2) $$
+$$ P(a_i | d_2, c_1, b_1) $$
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -14973,8 +14974,8 @@ $$ P(a_i | b_1, c_1, d_2) $$
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;winter|north_atlantic,light,thin&quot;</span><span class="p">)</span>
 <span class="n">P</span><span class="p">(</span><span class="s2">&quot;a1|north_atlantic,light,thin&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a1|b1,c1,d2&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;winter|b1,c1,d2&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a1|d2,c1,b1&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;winter|d2,c1,b1&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14996,7 +14997,7 @@ $$ P(a_i | b_1, c_1, d_2) $$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(winter|north\_atlantic,light,thin) = 0.278$
+$\displaystyle P(winter|north\_atlantic,light,thin) = 0.2784$
 </div>
 
 </div>
@@ -15010,7 +15011,7 @@ $\displaystyle P(winter|north\_atlantic,light,thin) = 0.278$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a1|north\_atlantic,light,thin) = 0.278$
+$\displaystyle P(a1|north\_atlantic,light,thin) = 0.2784$
 </div>
 
 </div>
@@ -15024,7 +15025,7 @@ $\displaystyle P(a1|north\_atlantic,light,thin) = 0.278$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a1|b1,c1,d2) = 0.278$
+$\displaystyle P(a1|d2,c1,b1) = 0.2784$
 </div>
 
 </div>
@@ -15038,7 +15039,7 @@ $\displaystyle P(a1|b1,c1,d2) = 0.278$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(winter|b1,c1,d2) = 0.278$
+$\displaystyle P(winter|d2,c1,b1) = 0.2784$
 </div>
 
 </div>
@@ -15055,8 +15056,8 @@ $\displaystyle P(winter|b1,c1,d2) = 0.278$
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;spring|north_atlantic,light,thin&quot;</span><span class="p">)</span>
 <span class="n">P</span><span class="p">(</span><span class="s2">&quot;a2|north_atlantic,light,thin&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a2|b1,c1,d2&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;spring|b1,c1,d2&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a2|d2,c1,b1&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;spring|d2,c1,b1&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15078,7 +15079,7 @@ $\displaystyle P(winter|b1,c1,d2) = 0.278$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(spring|north\_atlantic,light,thin) = 0.316$
+$\displaystyle P(spring|north\_atlantic,light,thin) = 0.3163$
 </div>
 
 </div>
@@ -15092,7 +15093,7 @@ $\displaystyle P(spring|north\_atlantic,light,thin) = 0.316$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a2|north\_atlantic,light,thin) = 0.316$
+$\displaystyle P(a2|north\_atlantic,light,thin) = 0.3163$
 </div>
 
 </div>
@@ -15106,7 +15107,7 @@ $\displaystyle P(a2|north\_atlantic,light,thin) = 0.316$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a2|b1,c1,d2) = 0.316$
+$\displaystyle P(a2|d2,c1,b1) = 0.3163$
 </div>
 
 </div>
@@ -15120,7 +15121,7 @@ $\displaystyle P(a2|b1,c1,d2) = 0.316$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(spring|b1,c1,d2) = 0.316$
+$\displaystyle P(spring|d2,c1,b1) = 0.3163$
 </div>
 
 </div>
@@ -15137,8 +15138,8 @@ $\displaystyle P(spring|b1,c1,d2) = 0.316$
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;summer|north_atlantic,light,thin&quot;</span><span class="p">)</span>
 <span class="n">P</span><span class="p">(</span><span class="s2">&quot;a3|north_atlantic,light,thin&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a3|b1,c1,d2&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;summer|b1,c1,d2&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a3|d2,c1,b1&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;summer|d2,c1,b1&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15160,7 +15161,7 @@ $\displaystyle P(spring|b1,c1,d2) = 0.316$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(summer|north\_atlantic,light,thin) = 0.241$
+$\displaystyle P(summer|north\_atlantic,light,thin) = 0.2405$
 </div>
 
 </div>
@@ -15174,7 +15175,7 @@ $\displaystyle P(summer|north\_atlantic,light,thin) = 0.241$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a3|north\_atlantic,light,thin) = 0.241$
+$\displaystyle P(a3|north\_atlantic,light,thin) = 0.2405$
 </div>
 
 </div>
@@ -15188,7 +15189,7 @@ $\displaystyle P(a3|north\_atlantic,light,thin) = 0.241$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a3|b1,c1,d2) = 0.241$
+$\displaystyle P(a3|d2,c1,b1) = 0.2405$
 </div>
 
 </div>
@@ -15202,7 +15203,7 @@ $\displaystyle P(a3|b1,c1,d2) = 0.241$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(summer|b1,c1,d2) = 0.241$
+$\displaystyle P(summer|d2,c1,b1) = 0.2405$
 </div>
 
 </div>
@@ -15219,8 +15220,8 @@ $\displaystyle P(summer|b1,c1,d2) = 0.241$
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;autumn|north_atlantic,light,thin&quot;</span><span class="p">)</span>
 <span class="n">P</span><span class="p">(</span><span class="s2">&quot;a4|north_atlantic,light,thin&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a4|b1,c1,d2&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;autumn|b1,c1,d2&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;a4|d2,c1,b1&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;autumn|d2,c1,b1&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15242,7 +15243,7 @@ $\displaystyle P(summer|b1,c1,d2) = 0.241$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(autumn|north\_atlantic,light,thin) = 0.165$
+$\displaystyle P(autumn|north\_atlantic,light,thin) = 0.1648$
 </div>
 
 </div>
@@ -15256,7 +15257,7 @@ $\displaystyle P(autumn|north\_atlantic,light,thin) = 0.165$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a4|north\_atlantic,light,thin) = 0.165$
+$\displaystyle P(a4|north\_atlantic,light,thin) = 0.1648$
 </div>
 
 </div>
@@ -15270,7 +15271,7 @@ $\displaystyle P(a4|north\_atlantic,light,thin) = 0.165$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(a4|b1,c1,d2) = 0.165$
+$\displaystyle P(a4|d2,c1,b1) = 0.1648$
 </div>
 
 </div>
@@ -15284,7 +15285,7 @@ $\displaystyle P(a4|b1,c1,d2) = 0.165$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(autumn|b1,c1,d2) = 0.165$
+$\displaystyle P(autumn|d2,c1,b1) = 0.1648$
 </div>
 
 </div>
@@ -15304,9 +15305,9 @@ $\displaystyle P(autumn|b1,c1,d2) = 0.165$
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ans</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a1|b1,c1,d2&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a2|b1,c1,d2&quot;</span><span class="p">)</span> <span class="o">+</span> \
-        <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a3|b1,c1,d2&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a4|b1,c1,d2&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="s2">&quot;\sum_{i=1}^</span><span class="si">{4}</span><span class="s2">P(a_i | b_1, c_1, d_2) =&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ans</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ans</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a1|d2,c1,b1&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a2|d2,c1,b1&quot;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a3|d2,c1,b1&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">net</span><span class="o">.</span><span class="n">prob</span><span class="p">(</span><span class="s2">&quot;a4|d2,c1,b1&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="s2">&quot;\sum_{i=1}^</span><span class="si">{4}</span><span class="s2">P(a_i | d_2, c_1, b_1) =&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ans</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15328,7 +15329,7 @@ $\displaystyle P(autumn|b1,c1,d2) = 0.165$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle \sum_{i=1}^{4}P(a_i | b_1, c_1, d_2) =1.0$
+$\displaystyle \sum_{i=1}^{4}P(a_i | d_2, c_1, b_1) =1.0$
 </div>
 
 </div>
@@ -15346,12 +15347,12 @@ $\displaystyle \sum_{i=1}^{4}P(a_i | b_1, c_1, d_2) =1.0$
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="(c)-A-medium,-thin-fish-is-caught-in-the-Summer.-What-is-the-probability-it-came-from-the-North-Atlantic?">(c) A <em>medium</em>, <em>thin</em> fish is caught in the <em>Summer</em>. What is the probability it came from the <em>North Atlantic</em>?<a class="anchor-link" href="#(c)-A-medium,-thin-fish-is-caught-in-the-Summer.-What-is-the-probability-it-came-from-the-North-Atlantic?">&#182;</a></h2><ul>
-<li>Summer is $a_3$</li>
-<li>North Atlantic is $b_1$</li>
 <li>Medium is $c_2$</li>
 <li>Thin is $d_2$</li>
+<li>Summer is $a_3$</li>
+<li>North Atlantic is $b_1$</li>
 </ul>
-$$ P(b_1| a_3, c_2, d_2) $$
+$$ P(b_1| c_2, d_2, a_3) $$
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -15360,7 +15361,7 @@ $$ P(b_1| a_3, c_2, d_2) $$
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;north_atlantic|medium,thin,summer&quot;</span><span class="p">)</span>
-<span class="n">P</span><span class="p">(</span><span class="s2">&quot;b1|a3,c2,d2&quot;</span><span class="p">)</span>
+<span class="n">P</span><span class="p">(</span><span class="s2">&quot;b1|c2,d2,a3&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15382,7 +15383,7 @@ $$ P(b_1| a_3, c_2, d_2) $$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(north\_atlantic|medium,thin,summer) = 0.611$
+$\displaystyle P(north\_atlantic|medium,thin,summer) = 0.6115$
 </div>
 
 </div>
@@ -15396,7 +15397,7 @@ $\displaystyle P(north\_atlantic|medium,thin,summer) = 0.611$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle P(b1|a3,c2,d2) = 0.611$
+$\displaystyle P(b1|c2,d2,a3) = 0.6115$
 </div>
 
 </div>
