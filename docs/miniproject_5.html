@@ -15070,7 +15070,7 @@ $\displaystyle \vec{\mu}_3 = \begin{bmatrix} 0.5813 \\ 0.4961 \\ \end{bmatrix}$
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">C</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
-    <span class="n">np_mu</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_data</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+    <span class="n">np_mu</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_data</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">show</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\mathrm</span><span class="si">{Numpy}</span><span class="s1">\ \vec{\mu}_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np_mu</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
 </pre></div>
 
@@ -15093,7 +15093,7 @@ $\displaystyle \vec{\mu}_3 = \begin{bmatrix} 0.5813 \\ 0.4961 \\ \end{bmatrix}$
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle \mathrm{Numpy}\ \vec{\mu}_1 = \begin{bmatrix} 0.0496 \\ 0.0496 \\ \end{bmatrix}$
+$\displaystyle \mathrm{Numpy}\ \vec{\mu}_1 = \begin{bmatrix} 0.2754 \\ -0.1763 \\ \end{bmatrix}$
 </div>
 
 </div>
@@ -15107,7 +15107,7 @@ $\displaystyle \mathrm{Numpy}\ \vec{\mu}_1 = \begin{bmatrix} 0.0496 \\ 0.0496 \\
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle \mathrm{Numpy}\ \vec{\mu}_2 = \begin{bmatrix} 0.2712 \\ 0.2712 \\ \end{bmatrix}$
+$\displaystyle \mathrm{Numpy}\ \vec{\mu}_2 = \begin{bmatrix} 0.3218 \\ 0.2207 \\ \end{bmatrix}$
 </div>
 
 </div>
@@ -15121,7 +15121,7 @@ $\displaystyle \mathrm{Numpy}\ \vec{\mu}_2 = \begin{bmatrix} 0.2712 \\ 0.2712 \\
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output " data-mime-type="text/latex">
-$\displaystyle \mathrm{Numpy}\ \vec{\mu}_3 = \begin{bmatrix} 0.5387 \\ 0.5387 \\ \end{bmatrix}$
+$\displaystyle \mathrm{Numpy}\ \vec{\mu}_3 = \begin{bmatrix} 0.5813 \\ 0.4961 \\ \end{bmatrix}$
 </div>
 
 </div>
@@ -15156,7 +15156,7 @@ $\displaystyle \mathrm{Numpy}\ \vec{\mu}_3 = \begin{bmatrix} 0.5387 \\ 0.5387 \\
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>np.mean == compute_mean? False
+<pre>np.mean == compute_mean? True
 </pre>
 </div>
 </div>
@@ -15734,6 +15734,7 @@ $$
 <li>15 samples are classified as class 1 but actually they are from class 2</li>
 <li>7 samples are classified as class 2 but actually they are from class 3</li>
 </ul>
+<p>No samples of class 1 are misclassified as class 3, and vice versa. The reason is the class 1 samples are compact and are in the most inner part as opposed to the class 3 samples. If they will be misclassified, they should be classified as class 2 more than class 3.</p>
 
 </div>
 </div>
@@ -16104,7 +16105,8 @@ $\displaystyle \mathrm{Unbiased\ Numpy}\ \mathbf{\Sigma}_3 = \begin{bmatrix}  5.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Well, the results from using biased and unbiased covariance matrices are different a little bit. Some noticeable changes are as follows:</p>
+<p>Well, the results from using biased and unbiased covariance matrices are different a little bit. Again, no samples of class 1 are misclassified as class 3, and vice versa.</p>
+<p>Some noticeable changes are as follows:</p>
 <ul>
 <li>The number of samples are classified as class 1 but actually they are from class 2: changed from 15 to 17</li>
 <li>The number of samples are classified as class 2 and actually they are from class 2: increased from 61 to 62</li>
@@ -17019,6 +17021,7 @@ $$
 <li>17 samples are classified as class 3 but actually they are from class 2</li>
 <li>3 samples are classified as class 2 but actually they are from class 3</li>
 </ul>
+<p>Again, no samples of class 1 are misclassified as class 3, and vice versa.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
